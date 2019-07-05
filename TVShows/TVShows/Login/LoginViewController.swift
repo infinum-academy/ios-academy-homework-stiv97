@@ -35,20 +35,21 @@ class LoginViewController: UIViewController {
         // change label
         clickCounter += 1
         myLabel.text = String(clickCounter)
-        // change background
+        
+        // randomly change background
         view.backgroundColor = UIColor.init(
             red: CGFloat(Float.random(in: 0 ..< 1)),
             green: CGFloat(Float.random(in: 0 ..< 1)),
             blue: CGFloat(Float.random(in: 0 ..< 1)),
             alpha: 1);
+        
         // change activity
         if(activityIndicator){
             myActivityIndicator.stopAnimating()
-            activityIndicator = false;
         } else {
             myActivityIndicator.startAnimating()
-            activityIndicator = true;
         }
+        activityIndicator = !activityIndicator
     }
     
     
