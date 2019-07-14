@@ -15,6 +15,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var myButton: UIButton!
     @IBOutlet weak var myLabel: UILabel!
     @IBOutlet weak var myActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var myCenterY: NSLayoutConstraint!
     
     var clickCounter : Int = 0
     var activityIndicator : Bool = false
@@ -51,6 +52,8 @@ class LoginViewController: UIViewController {
             myActivityIndicator.startAnimating()
         }
         activityIndicator = !activityIndicator
+        
+      
     }
     
     

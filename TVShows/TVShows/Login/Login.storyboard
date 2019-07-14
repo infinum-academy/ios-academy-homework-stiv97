@@ -34,26 +34,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cyk-t1-Uf8">
-                                <rect key="frame" x="345" y="771" width="51" height="31"/>
-                            </switch>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Hpv-K2-AEo">
                                 <rect key="frame" x="177" y="92" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NuV-xU-dnR">
-                                <rect key="frame" x="289" y="771.5" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="cyk-t1-Uf8" firstAttribute="centerY" secondItem="NuV-xU-dnR" secondAttribute="centerY" id="FMf-L8-8fJ"/>
-                            <constraint firstItem="e63-pz-aek" firstAttribute="trailing" secondItem="cyk-t1-Uf8" secondAttribute="trailing" constant="20" id="Nge-fr-bt8"/>
-                            <constraint firstItem="e63-pz-aek" firstAttribute="bottom" secondItem="cyk-t1-Uf8" secondAttribute="bottom" constant="60" id="gvQ-Ex-IDl"/>
-                            <constraint firstItem="cyk-t1-Uf8" firstAttribute="leading" secondItem="NuV-xU-dnR" secondAttribute="trailing" constant="15" id="ndp-IP-ZkV"/>
-                            <constraint firstItem="cyk-t1-Uf8" firstAttribute="leading" secondItem="NuV-xU-dnR" secondAttribute="trailing" constant="10" id="nhP-zN-EqQ"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="e63-pz-aek"/>
                     </view>
                     <connections>
