@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,7 @@
 		DA01872D22CE53DF00A32810 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA01872B22CE53DF00A32810 /* LaunchScreen.storyboard */; };
 		DA01873C22CF7B4B00A32810 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA01873B22CF7B4B00A32810 /* Login.storyboard */; };
 		DA01873E22CF7BBE00A32810 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA01873D22CF7BBE00A32810 /* LoginViewController.swift */; };
+		DAD48C9522DDF9D9009CBD97 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD48C9422DDF9D9009CBD97 /* CheckBox.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		DA01872E22CE53DF00A32810 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA01873B22CF7B4B00A32810 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		DA01873D22CF7BBE00A32810 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		DAD48C9422DDF9D9009CBD97 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		DB01137C6EB2118E688BAA29 /* Pods_TVShows.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TVShows.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -54,7 +56,6 @@
 				14F8834AF259084BCC48B9D6 /* Pods-TVShows.debug.xcconfig */,
 				34FF39E44CBC60549FC99099 /* Pods-TVShows.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -93,6 +94,7 @@
 			children = (
 				DA01873B22CF7B4B00A32810 /* Login.storyboard */,
 				DA01873D22CF7BBE00A32810 /* LoginViewController.swift */,
+				DAD48C9422DDF9D9009CBD97 /* CheckBox.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -214,6 +216,7 @@
 			files = (
 				DA01873E22CF7BBE00A32810 /* LoginViewController.swift in Sources */,
 				DA01872322CE53D900A32810 /* AppDelegate.swift in Sources */,
+				DAD48C9522DDF9D9009CBD97 /* CheckBox.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
