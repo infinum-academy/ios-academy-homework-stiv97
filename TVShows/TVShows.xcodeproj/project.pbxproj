@@ -14,19 +14,23 @@
 		DA01873C22CF7B4B00A32810 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA01873B22CF7B4B00A32810 /* Login.storyboard */; };
 		DA01873E22CF7BBE00A32810 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA01873D22CF7BBE00A32810 /* LoginViewController.swift */; };
 		DAD48C9522DDF9D9009CBD97 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD48C9422DDF9D9009CBD97 /* CheckBox.swift */; };
+		DAD48C9C22DE8FEA009CBD97 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD48C9B22DE8FEA009CBD97 /* HomeViewController.swift */; };
+		DAD48C9E22DE9023009CBD97 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAD48C9D22DE9023009CBD97 /* Home.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		14F8834AF259084BCC48B9D6 /* Pods-TVShows.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TVShows.debug.xcconfig"; path = "Target Support Files/Pods-TVShows/Pods-TVShows.debug.xcconfig"; sourceTree = "<group>"; };
 		34FF39E44CBC60549FC99099 /* Pods-TVShows.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TVShows.release.xcconfig"; path = "Target Support Files/Pods-TVShows/Pods-TVShows.release.xcconfig"; sourceTree = "<group>"; };
 		DA01871F22CE53D900A32810 /* TVShows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TVShows.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		DA01872222CE53D900A32810 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DA01872922CE53DF00A32810 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DA01872222CE53D900A32810 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../Configuration/AppDelegate.swift; sourceTree = "<group>"; };
+		DA01872922CE53DF00A32810 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Configuration/Assets.xcassets; sourceTree = "<group>"; };
 		DA01872C22CE53DF00A32810 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA01872E22CE53DF00A32810 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA01873B22CF7B4B00A32810 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		DA01873D22CF7BBE00A32810 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DAD48C9422DDF9D9009CBD97 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		DAD48C9B22DE8FEA009CBD97 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../HomeViewController.swift; sourceTree = "<group>"; };
+		DAD48C9D22DE9023009CBD97 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Home.storyboard; path = ../Home.storyboard; sourceTree = "<group>"; };
 		DB01137C6EB2118E688BAA29 /* Pods_TVShows.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TVShows.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -80,10 +84,9 @@
 		DA01872122CE53D900A32810 /* TVShows */ = {
 			isa = PBXGroup;
 			children = (
+				DAD48C9F22DE902C009CBD97 /* Home */,
 				DA01873A22CF7B1700A32810 /* Login */,
-				DA01872222CE53D900A32810 /* AppDelegate.swift */,
-				DA01872922CE53DF00A32810 /* Assets.xcassets */,
-				DA01872B22CE53DF00A32810 /* LaunchScreen.storyboard */,
+				DAD48C9822DE8355009CBD97 /* Configuration */,
 				DA01872E22CE53DF00A32810 /* Info.plist */,
 			);
 			path = TVShows;
@@ -97,6 +100,25 @@
 				DAD48C9422DDF9D9009CBD97 /* CheckBox.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		DAD48C9822DE8355009CBD97 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				DA01872B22CE53DF00A32810 /* LaunchScreen.storyboard */,
+				DA01872222CE53D900A32810 /* AppDelegate.swift */,
+				DA01872922CE53DF00A32810 /* Assets.xcassets */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		DAD48C9F22DE902C009CBD97 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				DAD48C9B22DE8FEA009CBD97 /* HomeViewController.swift */,
+				DAD48C9D22DE9023009CBD97 /* Home.storyboard */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,6 +184,7 @@
 				DA01872D22CE53DF00A32810 /* LaunchScreen.storyboard in Resources */,
 				DA01872A22CE53DF00A32810 /* Assets.xcassets in Resources */,
 				DA01873C22CF7B4B00A32810 /* Login.storyboard in Resources */,
+				DAD48C9E22DE9023009CBD97 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +240,7 @@
 				DA01873E22CF7BBE00A32810 /* LoginViewController.swift in Sources */,
 				DA01872322CE53D900A32810 /* AppDelegate.swift in Sources */,
 				DAD48C9522DDF9D9009CBD97 /* CheckBox.swift in Sources */,
+				DAD48C9C22DE8FEA009CBD97 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
