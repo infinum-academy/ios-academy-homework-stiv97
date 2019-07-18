@@ -26,13 +26,12 @@ struct LoginUser: Codable {
     let token: String
 }
 
-
 let parameters: [String: String] = [
     "email": "",
     "password": ""
 ]
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
     
     @IBOutlet private weak var usernameTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
@@ -42,8 +41,7 @@ class LoginViewController: UIViewController {
     
     private var newUser: User?
     private var loginUser: LoginUser?
-    
-    
+
     private var username : String {
         if let text = self.usernameTextField.text {
             return text
@@ -61,21 +59,12 @@ class LoginViewController: UIViewController {
     }
     
     private lazy var rememberCheckBox = CheckBox(checkedImage: "ic-checkbox-filled", uncheckedImage: "ic-checkbox-empty", button: self.rememberButton)
- 
-    
-   private let pink = UIColor(
-        red: 255/255,
-        green: 117/255,
-        blue: 140/255,
-        alpha: 1
-    )
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loginButton.layer.cornerRadius = 10
-        loginButton.backgroundColor = pink
-        registerButton.setTitleColor(pink, for: .normal)
+        loginButton.backgroundColor = .pink
+        registerButton.setTitleColor(.pink, for: .normal)
     }
 
     @IBAction private func rememberButtonPressed(_ sender: UIButton) {
@@ -84,7 +73,6 @@ class LoginViewController: UIViewController {
     
     @IBAction private func loginButtonPressed(_ sender: Any) {
         if checkUsernameAndPassword() {
-            
                 SVProgressHUD.show()
                 let parameters: [String: String] = [
                     "email": username,
@@ -118,9 +106,7 @@ class LoginViewController: UIViewController {
     
     @IBAction private func registerButtonPressed(_ sender: Any) {
         if checkUsernameAndPassword() {
-            
             SVProgressHUD.show()
-            
             let parameters: [String: String] = [
                 "email": username,
                 "password": password
@@ -150,8 +136,7 @@ class LoginViewController: UIViewController {
             }
         }
     }
-    
-
+    // notify user about login problem
     private func unableToLogin() {
         let alert = UIAlertController(
             title: "Unable to login",
@@ -163,7 +148,7 @@ class LoginViewController: UIViewController {
         
         present(alert, animated: true, completion: nil)
     }
-    
+    // notify user about registration problem
     private func unableToRegister() {
         let alert = UIAlertController(
             title: "Unable to register",
@@ -175,8 +160,7 @@ class LoginViewController: UIViewController {
         
         present(alert, animated: true, completion: nil)
     }
-    
-    
+    // check for empty fields and notify user if any
     private func checkUsernameAndPassword() -> Bool {
         if username.isEmpty || password.isEmpty {
             let alert = UIAlertController(
@@ -192,4 +176,13 @@ class LoginViewController: UIViewController {
         }
         return true
     }
+}
+
+public extension UIColor {
+    static let pink = UIColor(
+        red: 255/255,
+        green: 117/255,
+        blue: 140/255,
+        alpha: 1
+    )
 }

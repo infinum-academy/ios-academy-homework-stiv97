@@ -9,8 +9,7 @@
 import Foundation
 import UIKit
 
-
-class CheckBox {
+final class CheckBox {
     private let checkedImage : UIImage
     private let uncheckedImage : UIImage
     private let button : UIButton
@@ -46,5 +45,4 @@ class CheckBox {
         
         self.button = button
     }
-    
 }
