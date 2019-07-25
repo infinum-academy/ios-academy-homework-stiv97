@@ -18,23 +18,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8QY-2Y-Gc1">
-                                <rect key="frame" x="142.5" y="418" width="129" height="60"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sSe-gX-naG">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="8QY-2Y-Gc1" firstAttribute="centerX" secondItem="60m-Jt-nf1" secondAttribute="centerX" id="2Fb-l1-BeK"/>
-                            <constraint firstItem="8QY-2Y-Gc1" firstAttribute="centerY" secondItem="60m-Jt-nf1" secondAttribute="centerY" id="FiT-aL-Ywo"/>
+                            <constraint firstItem="sSe-gX-naG" firstAttribute="centerY" secondItem="60m-Jt-nf1" secondAttribute="centerY" id="4Yu-89-hPQ"/>
+                            <constraint firstItem="sSe-gX-naG" firstAttribute="centerX" secondItem="60m-Jt-nf1" secondAttribute="centerX" id="ogO-GF-nX6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JRm-bu-hSy"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D4Y-KN-FKz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="79.6875"/>
         </scene>
     </scenes>
 </document>

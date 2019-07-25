@@ -11,26 +11,6 @@ import Alamofire
 import CodableAlamofire
 import SVProgressHUD
 
-struct User: Codable {
-    let email: String
-    let type: String
-    let id: String
-    enum CodingKeys: String, CodingKey {
-        case email
-        case type
-        case id = "_id"
-    }
-}
-
-struct LoginUser: Codable {
-    let token: String
-}
-
-let parameters: [String: String] = [
-    "email": "",
-    "password": ""
-]
-
 final class LoginViewController: UIViewController {
     
     @IBOutlet private weak var usernameTextField: UITextField!
@@ -43,7 +23,7 @@ final class LoginViewController: UIViewController {
     private var loginUser: LoginUser?
 
     private var username : String {
-        if let text = self.usernameTextField.text {
+        if let text = usernameTextField.text {
             return text
         } else{
             return ""
@@ -51,14 +31,14 @@ final class LoginViewController: UIViewController {
     }
     
     private var password : String {
-        if let text = self.passwordTextField.text {
+        if let text = passwordTextField.text {
             return text
         } else{
             return ""
         }
     }
     
-    private lazy var rememberCheckBox = CheckBox(checkedImage: "ic-checkbox-filled", uncheckedImage: "ic-checkbox-empty", button: self.rememberButton)
+    private lazy var rememberCheckBox = CheckBox(checkedImage: "ic-checkbox-filled", uncheckedImage: "ic-checkbox-empty", button: rememberButton)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,117 +52,86 @@ final class LoginViewController: UIViewController {
     }
     
     @IBAction private func loginButtonPressed(_ sender: Any) {
-        if checkUsernameAndPassword() {
-                SVProgressHUD.show()
-                let parameters: [String: String] = [
-                    "email": username,
-                    "password": password
-                ]
-                
-                Alamofire
-                    .request("https://api.infinum.academy/api/users/sessions",
-                             method: .post,
-                             parameters: parameters,
-                             encoding: JSONEncoding.default)
-                    .validate()
-                    .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) {
-                        (response: DataResponse<LoginUser>) in
-                        
-                        SVProgressHUD.dismiss()
-                        switch response.result {
-                        case .success(let user):
-                            self.loginUser = user
-                            let storyboard = UIStoryboard(name: "Home", bundle: nil)
-                            let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as UIViewController
-                            self.show(vc, sender: self)
-                        case .failure(let error):
-                            self.unableToLogin()
-                            print("API failure: \(error)")
-                        }
-                        
-                    }
-            }
+        guard checkUsernameAndPassword() else { return }
+        let parameters: [String: String] = [
+            "email": username,
+            "password": password
+        ]
+        loginUser(parameters: parameters)
     }
     
     @IBAction private func registerButtonPressed(_ sender: Any) {
-        if checkUsernameAndPassword() {
-            SVProgressHUD.show()
-            let parameters: [String: String] = [
-                "email": username,
-                "password": password
-            ]
-            
-            Alamofire
-                .request("https://api.infinum.academy/api/users",
-                         method: .post,
-                         parameters: parameters,
-                         encoding: JSONEncoding.default)
-                .validate()
-                .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) {
-                    (response: DataResponse<User>) in
+        guard checkUsernameAndPassword() else { return }
+        SVProgressHUD.show()
+        let parameters: [String: String] = [
+            "email": username,
+            "password": password
+        ]
+        Alamofire
+            .request("https://api.infinum.academy/api/users",
+                    method: .post,
+                    parameters: parameters,
+                    encoding: JSONEncoding.default)
+            .validate()
+            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) {
+                [weak self] (response: DataResponse<User>) in
                     
-                    SVProgressHUD.dismiss()
-                    switch response.result {
-                    case .success(let user):
-                        self.newUser = user
-                        let storyboard = UIStoryboard(name: "Home", bundle: nil)
-                        let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as UIViewController
-                        self.show(vc, sender: self)
-                    case .failure(let error):
-                        self.unableToRegister()
-                        print("API failure: \(error)")
-                    }
-                    
-            }
+                SVProgressHUD.dismiss()
+                guard let self = self else { return }
+                switch response.result {
+                case .success(let user):
+                    self.newUser = user
+                    self.loginUser(parameters: parameters)
+                case .failure(let error):
+                    self.alertMessage(title: "Unable to register", message: "Please check entered email")
+                    print("API failure: \(error)")
+                }
         }
     }
-    // notify user about login problem
-    private func unableToLogin() {
-        let alert = UIAlertController(
-            title: "Unable to login",
-            message: "Please check username and password",
-            preferredStyle: UIAlertController.Style.alert)
-        
-        let OKAction = UIAlertAction(title: "OK", style: .default)
-        alert.addAction(OKAction)
-        
-        present(alert, animated: true, completion: nil)
+    // Alamofire login request
+    private func loginUser(parameters: [String:String]){
+        SVProgressHUD.show()
+        Alamofire
+            .request("https://api.infinum.academy/api/users/sessions",
+                     method: .post,
+                     parameters: parameters,
+                     encoding: JSONEncoding.default)
+            .validate()
+            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) {
+               [weak self] (response: DataResponse<LoginUser>) in
+                
+                SVProgressHUD.dismiss()
+                guard let self = self else { return }
+                switch response.result {
+                case .success(let user):
+                    self.loginUser = user
+                    let storyboard = UIStoryboard(name: "Home", bundle: nil)
+                    guard let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
+                    vc.loginUser = self.loginUser
+                    self.show(vc, sender: self)
+                case .failure(let error):
+                    self.alertMessage(title: "Unable to login", message: "Please check username and password")
+                    print("API failure: \(error)")
+                }
+        }
     }
-    // notify user about registration problem
-    private func unableToRegister() {
+    // alert user with message and title
+    private func alertMessage(title: String, message: String) {
         let alert = UIAlertController(
-            title: "Unable to register",
-            message: "Please check entered email",
-            preferredStyle: UIAlertController.Style.alert)
-        
-        let OKAction = UIAlertAction(title: "OK", style: .default)
-        alert.addAction(OKAction)
-        
+            title: title,
+            message: message,
+            preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
     }
     // check for empty fields and notify user if any
     private func checkUsernameAndPassword() -> Bool {
         if username.isEmpty || password.isEmpty {
-            let alert = UIAlertController(
-                title: "Empty Fields",
-                message: "Please fill username and password",
-                preferredStyle: UIAlertController.Style.alert)
-            
-            let OKAction = UIAlertAction(title: "OK", style: .default)
-            alert.addAction(OKAction)
-            
-            present(alert, animated: true, completion: nil)
+            alertMessage(title: "Empty Fields", message: "Please fill username and password")
             return false
         }
         return true
     }
 }
 
-public extension UIColor {
-    static let pink = UIColor(
-        red: 255/255,
-        green: 117/255,
-        blue: 140/255,
-        alpha: 1
-    )
-}
