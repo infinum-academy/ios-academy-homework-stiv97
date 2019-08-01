@@ -15,11 +15,11 @@ final class CheckBox {
     private let button : UIButton
     
     var isChecked : Bool {
-        return self.button.currentImage == self.uncheckedImage
+        return (self.button.currentImage == self.checkedImage)
     }
     
     func pressed(){
-        if self.isChecked {
+        if !self.isChecked {
             button.setImage(checkedImage, for: .normal)
         } else {
             button.setImage(uncheckedImage, for: .normal)
