@@ -56,7 +56,6 @@ final class ShowDetailsViewController: UIViewController {
         let vc = storyboard.instantiateViewController(withIdentifier: "AddEpisodeViewController") as! AddEpisodeViewController
         vc.showId = showId
         vc.loginUser = loginUser
-        vc.mediaId = showDetails?.id
         vc.delegate = self
         let navigationController = UINavigationController(rootViewController: vc)
         self.present(navigationController, animated: true, completion: nil)
@@ -75,6 +74,14 @@ extension ShowDetailsViewController: UITableViewDataSource, UITableViewDelegate 
             cell.setEpisodeTitle(title: episode.title)
         }
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let episode = self.episodes?[indexPath.row] else { return }
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "EpisodeDetailsViewController") as? EpisodeDetailsViewController else { return }
+        vc.episode = episode
+        vc.loginUser = loginUser
+        self.show(vc, sender: self)
     }
 }
 
@@ -152,7 +159,6 @@ extension ShowDetailsViewController {
         }
     }
 }
-
 
 extension ShowDetailsViewController: AddNewEpisodeDelegate {
     func didSucceed() {

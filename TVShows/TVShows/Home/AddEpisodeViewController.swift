@@ -23,15 +23,20 @@ class AddEpisodeViewController: UIViewController{
     
     var loginUser: LoginUser?
     var showId: String?
-    var mediaId: String?
+   
     weak var delegate: AddNewEpisodeDelegate?
     private var episodeTitleField: UITextField!
     private var seasonNumField: UITextField!
     private var episodeNumField: UITextField!
     private var episodeDescriptionField: UITextField!
     let imagePicker = UIImagePickerController()
+    private var mediaId: String?
+    private var media: Media? {
+        didSet {
+            mediaId = media?.id
+        }
+    }
    
-    
     private var episodeTitle: String {
         if let text = episodeTitleField.text {
             return text
@@ -83,7 +88,9 @@ class AddEpisodeViewController: UIViewController{
         
         navigationItem.leftBarButtonItem?.tintColor = .pink
         navigationItem.rightBarButtonItem?.tintColor = .pink
-        uploadPhotoButton?.tintColor = .pink
+        
+        uploadPhotoButton.tintColor = .pink
+        uploadPhotoButton.layer.cornerRadius = 10
         
         episodeTitleField = UnderLineTextField()
         seasonNumField = UnderLineTextField()
@@ -114,29 +121,94 @@ class AddEpisodeViewController: UIViewController{
                 print("Invalid user")
                 return
         }
+        DispatchQueue.main.async {
+            self.uploadImageOnAPI(token: token)
+            self.addEpisode()
+        }
         
+    }
+    
+    @objc func didSelectCancel() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction private func uploadPhotoButtonClicked(_ sender: Any) {
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = false
+        present(imagePicker, animated: true, completion: nil)
+    }
+
+}
+
+extension AddEpisodeViewController: UIImagePickerControllerDelegate,  UINavigationControllerDelegate {
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            self.uploadedImage.contentMode = .scaleAspectFit
+            self.uploadedImage.image = pickedImage
+        }
+        imagePicker.dismiss(animated: true)
+    }
+    
+}
+
+private extension AddEpisodeViewController {
+    func uploadImageOnAPI(token: String) {
+        let headers = ["Authorization": token]
+        guard let someUIImage = uploadedImage.image
+            else { return }
+        let imageByteData = someUIImage.pngData()!
+        SVProgressHUD.show()
+        Alamofire
+            .upload(multipartFormData: { multipartFormData in
+                multipartFormData.append(imageByteData,
+                                         withName: "file",
+                                         fileName: "image.png",
+                                         mimeType: "image/png")
+            }, to: "https://api.infinum.academy/api/media",
+               method: .post,
+               headers: headers)
+            { [weak self] result in
+                switch result {
+                case .success(let uploadRequest, _, _):
+                    self?.processUploadRequest(uploadRequest)
+                case .failure(let encodingError):
+                     print(encodingError)
+                } }
+       
+    }
+    func processUploadRequest(_ uploadRequest: UploadRequest) {
+        uploadRequest
+            .responseDecodableObject(keyPath: "data") { [weak self] (response:DataResponse<Media>) in
+                switch response.result {
+                case .success(let media):
+                    self?.media = media
+                    print("Proceed to add episode call...")
+                case .failure(let error):
+                    print("FAILURE: \(error)")
+                }
+        }
+    }
+    
+    func addEpisode(){
+        guard let token = loginUser?.token
+            else {
+                print("Invalid user")
+                return
+            }
         guard let id = showId
             else {
                 return
-        }
-        
-        guard let mediaId = mediaId
-            else {
-                return
-        }
-        
-        SVProgressHUD.show()
-        
+            }   
         let headers = ["Authorization" : token]
         let parameters: [String:String] = [
             "showId": id,
-            "mediaId": mediaId,
+            "mediaId": media?.id ?? "",
             "title": episodeTitle,
             "description": episodeDescription,
             "episodeNumber": episodeNum,
             "season": seasonNum
         ]
-    
+        
         Alamofire
             .request("https://api.infinum.academy/api/episodes",
                      method: .post,
@@ -157,30 +229,6 @@ class AddEpisodeViewController: UIViewController{
                     print(error)
                 }
         }
-    }
-    
-    @objc func didSelectCancel() {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction private func uploadPhotoButtonClicked(_ sender: Any) {
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.allowsEditing = false
-        present(imagePicker, animated: true, completion: nil)
-        self.popoverPresentationController
-    }
-
-}
-
-extension AddEpisodeViewController: UIImagePickerControllerDelegate,  UINavigationControllerDelegate {
-    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
-        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            self.uploadedImage.contentMode = .scaleAspectFit
-            self.uploadedImage.image = pickedImage
-        }
-        //imagePicker.dismiss(animated: true){
-            
-        // self.dismiss
     }
     
 }
