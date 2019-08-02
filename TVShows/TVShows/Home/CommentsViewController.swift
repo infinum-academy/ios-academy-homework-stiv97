@@ -37,7 +37,7 @@ class CommentsViewController: UIViewController {
         let headers = ["Authorization" : token]
         
         Alamofire
-            .request("https://api.infinum.academy/api/episodes/" + episodeId + "comments",
+            .request("https://api.infinum.academy/api/episodes/" + episodeId + "/comments",
                      method: .get,
                      encoding: JSONEncoding.default,
                      headers: headers
@@ -51,6 +51,7 @@ class CommentsViewController: UIViewController {
                 switch response.result {
                 case .success(let comments):
                     self.comments = comments
+                    self.commentsTableView.reloadData()
                 case .failure(let error):
                     print("API failure: \(error)")
                 }
@@ -61,7 +62,41 @@ class CommentsViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     @IBAction func postButtonPressed(_ sender: Any) {
+        postComment()
+    }
+    
+    private func postComment(){
+        guard let token = loginUser?.token
+            else {
+                print("Invalid user")
+                return
+        }
+        let headers = ["Authorization" : token]
+        let parameters: [String:String] = [
+            "text": commentTextField.text ?? "",
+            "episodeId": episodeId ?? "",
+            
+        ]
         
+        Alamofire
+            .request("https://api.infinum.academy/api/comments",
+                     method: .post,
+                     parameters: parameters,
+                     encoding: JSONEncoding.default,
+                     headers: headers
+            )
+            .validate()
+            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) { (response: DataResponse<Comment>) in
+                SVProgressHUD.dismiss()
+                switch response.result {
+                case .success:
+                    print("Success")
+                    self.dismiss(animated: true, completion: nil)
+                case .failure(let error):
+                    self.alertMessage(title: "Failed", message: "API failure")
+                    print(error)
+                }
+        }
     }
 }
 
