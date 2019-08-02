@@ -45,6 +45,20 @@ final class LoginViewController: UIViewController {
         loginButton.layer.cornerRadius = 10
         loginButton.backgroundColor = .pink
         registerButton.setTitleColor(.pink, for: .normal)
+        
+        let username = UserDefaults.standard.object(forKey: "username") as? String ?? ""
+        if !username.isEmpty {
+            usernameTextField.text = username
+        }
+        
+        let password = UserDefaults.standard.string(forKey: "password") ?? ""
+        if !password.isEmpty {
+            passwordTextField.text = password
+        }
+        
+        if !username.isEmpty && !password.isEmpty {
+            rememberCheckBox.pressed()
+        }
     }
 
     @IBAction private func rememberButtonPressed(_ sender: UIButton) {
@@ -52,11 +66,23 @@ final class LoginViewController: UIViewController {
     }
     
     @IBAction private func loginButtonPressed(_ sender: Any) {
-        guard checkUsernameAndPassword() else { return }
+        guard checkUsernameAndPassword() else {
+            if username.isEmpty {
+                usernameTextField?.shake()
+            }
+            if password.isEmpty {
+                passwordTextField?.shake()
+            }
+            return
+        }
         let parameters: [String: String] = [
             "email": username,
             "password": password
         ]
+        if rememberCheckBox.isChecked {
+            UserDefaults.standard.set(username, forKey: "username")
+            UserDefaults.standard.set(password, forKey: "password")
+        }
         loginUser(parameters: parameters)
     }
     
@@ -115,16 +141,6 @@ final class LoginViewController: UIViewController {
                 }
         }
     }
-    // alert user with message and title
-    private func alertMessage(title: String, message: String) {
-        let alert = UIAlertController(
-            title: title,
-            message: message,
-            preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default)
-        alert.addAction(okAction)
-        present(alert, animated: true, completion: nil)
-    }
     // check for empty fields and notify user if any
     private func checkUsernameAndPassword() -> Bool {
         if username.isEmpty || password.isEmpty {
@@ -132,6 +148,18 @@ final class LoginViewController: UIViewController {
             return false
         }
         return true
+    }
+}
+
+extension UITextField {
+    func shake() {
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.duration = 0.05
+        animation.repeatCount = 5
+        animation.autoreverses = true
+        animation.fromValue = CGPoint(x: self.center.x - 4.0, y: self.center.y)
+        animation.toValue = CGPoint(x: self.center.x + 4.0, y: self.center.y)
+        layer.add(animation, forKey: "position")
     }
 }
 

@@ -4,4 +4,6 @@ target 'TVShows' do
   pod 'Alamofire'
   pod 'SVProgressHUD'
   pod 'CodableAlamofire'
+  pod 'UnderLineTextField'
+  pod 'Kingfisher'
 end

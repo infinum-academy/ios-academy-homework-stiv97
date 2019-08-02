@@ -17,9 +17,22 @@
 		DA17541722E86F460091DF6C /* LoginUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA17541622E86F460091DF6C /* LoginUser.swift */; };
 		DA17541922E8709C0091DF6C /* PinkColorExstension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA17541822E8709C0091DF6C /* PinkColorExstension.swift */; };
 		DA17541B22E874160091DF6C /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA17541A22E874160091DF6C /* Show.swift */; };
+		DA325C1922F08EA70059EE8A /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA325C1822F08EA70059EE8A /* Helper.swift */; };
+		DA325C1B22F0900E0059EE8A /* AlertMessageExstension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA325C1A22F0900E0059EE8A /* AlertMessageExstension.swift */; };
 		DAD48C9522DDF9D9009CBD97 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD48C9422DDF9D9009CBD97 /* CheckBox.swift */; };
 		DAD48CA222E4CA01009CBD97 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAD48CA022E4CA01009CBD97 /* Home.storyboard */; };
 		DAD48CA322E4CA01009CBD97 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD48CA122E4CA01009CBD97 /* HomeViewController.swift */; };
+		DAF2BCFB22E9CFF800365AAE /* ShowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2BCFA22E9CFF800365AAE /* ShowCell.swift */; };
+		DAF2BCFD22E9FD7800365AAE /* ShowDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2BCFC22E9FD7800365AAE /* ShowDetailsViewController.swift */; };
+		DAF2BCFF22EA473B00365AAE /* ShowDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2BCFE22EA473B00365AAE /* ShowDetails.swift */; };
+		DAF2BD0122EA5CC400365AAE /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2BD0022EA5CC400365AAE /* Episode.swift */; };
+		DAF2BD0322EB2A0200365AAE /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2BD0222EB2A0200365AAE /* EpisodeCell.swift */; };
+		DAF2BD0522EC99EF00365AAE /* AddEpisodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2BD0422EC99EF00365AAE /* AddEpisodeViewController.swift */; };
+		DAFAD27322F309CA00BC9E68 /* EpisodeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFAD27222F309CA00BC9E68 /* EpisodeDetailsViewController.swift */; };
+		DAFAD27522F3851E00BC9E68 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFAD27422F3851E00BC9E68 /* Media.swift */; };
+		DAFAD27722F3F71900BC9E68 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFAD27622F3F71900BC9E68 /* CommentsViewController.swift */; };
+		DAFAD27922F401CF00BC9E68 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFAD27822F401CF00BC9E68 /* Comment.swift */; };
+		DAFAD27B22F4040A00BC9E68 /* CommentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFAD27A22F4040A00BC9E68 /* CommentsCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,9 +49,22 @@
 		DA17541622E86F460091DF6C /* LoginUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUser.swift; sourceTree = "<group>"; };
 		DA17541822E8709C0091DF6C /* PinkColorExstension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinkColorExstension.swift; sourceTree = "<group>"; };
 		DA17541A22E874160091DF6C /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
+		DA325C1822F08EA70059EE8A /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		DA325C1A22F0900E0059EE8A /* AlertMessageExstension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessageExstension.swift; sourceTree = "<group>"; };
 		DAD48C9422DDF9D9009CBD97 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		DAD48CA022E4CA01009CBD97 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		DAD48CA122E4CA01009CBD97 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		DAF2BCFA22E9CFF800365AAE /* ShowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCell.swift; sourceTree = "<group>"; };
+		DAF2BCFC22E9FD7800365AAE /* ShowDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsViewController.swift; sourceTree = "<group>"; };
+		DAF2BCFE22EA473B00365AAE /* ShowDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetails.swift; sourceTree = "<group>"; };
+		DAF2BD0022EA5CC400365AAE /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		DAF2BD0222EB2A0200365AAE /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
+		DAF2BD0422EC99EF00365AAE /* AddEpisodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEpisodeViewController.swift; sourceTree = "<group>"; };
+		DAFAD27222F309CA00BC9E68 /* EpisodeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsViewController.swift; sourceTree = "<group>"; };
+		DAFAD27422F3851E00BC9E68 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
+		DAFAD27622F3F71900BC9E68 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		DAFAD27822F401CF00BC9E68 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		DAFAD27A22F4040A00BC9E68 /* CommentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsCell.swift; sourceTree = "<group>"; };
 		DB01137C6EB2118E688BAA29 /* Pods_TVShows.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TVShows.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -97,6 +123,7 @@
 				DA01873A22CF7B1700A32810 /* Login */,
 				DAD48C9822DE8355009CBD97 /* Configuration */,
 				DA01872E22CE53DF00A32810 /* Info.plist */,
+				DA325C1822F08EA70059EE8A /* Helper.swift */,
 			);
 			path = TVShows;
 			sourceTree = "<group>";
@@ -117,6 +144,10 @@
 				DA17541422E86EF30091DF6C /* User.swift */,
 				DA17541622E86F460091DF6C /* LoginUser.swift */,
 				DA17541A22E874160091DF6C /* Show.swift */,
+				DAF2BCFE22EA473B00365AAE /* ShowDetails.swift */,
+				DAF2BD0022EA5CC400365AAE /* Episode.swift */,
+				DAFAD27422F3851E00BC9E68 /* Media.swift */,
+				DAFAD27822F401CF00BC9E68 /* Comment.swift */,
 			);
 			path = NetworkModels;
 			sourceTree = "<group>";
@@ -127,6 +158,7 @@
 				DA17541822E8709C0091DF6C /* PinkColorExstension.swift */,
 				DA01872B22CE53DF00A32810 /* LaunchScreen.storyboard */,
 				DA01872222CE53D900A32810 /* AppDelegate.swift */,
+				DA325C1A22F0900E0059EE8A /* AlertMessageExstension.swift */,
 				DA01872922CE53DF00A32810 /* Assets.xcassets */,
 			);
 			path = Configuration;
@@ -137,6 +169,13 @@
 			children = (
 				DAD48CA022E4CA01009CBD97 /* Home.storyboard */,
 				DAD48CA122E4CA01009CBD97 /* HomeViewController.swift */,
+				DAF2BCFA22E9CFF800365AAE /* ShowCell.swift */,
+				DAF2BCFC22E9FD7800365AAE /* ShowDetailsViewController.swift */,
+				DAF2BD0222EB2A0200365AAE /* EpisodeCell.swift */,
+				DAF2BD0422EC99EF00365AAE /* AddEpisodeViewController.swift */,
+				DAFAD27222F309CA00BC9E68 /* EpisodeDetailsViewController.swift */,
+				DAFAD27622F3F71900BC9E68 /* CommentsViewController.swift */,
+				DAFAD27A22F4040A00BC9E68 /* CommentsCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -257,14 +296,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAF2BD0522EC99EF00365AAE /* AddEpisodeViewController.swift in Sources */,
 				DA17541722E86F460091DF6C /* LoginUser.swift in Sources */,
+				DA325C1922F08EA70059EE8A /* Helper.swift in Sources */,
+				DAF2BD0122EA5CC400365AAE /* Episode.swift in Sources */,
+				DAFAD27322F309CA00BC9E68 /* EpisodeDetailsViewController.swift in Sources */,
+				DA325C1B22F0900E0059EE8A /* AlertMessageExstension.swift in Sources */,
 				DA17541922E8709C0091DF6C /* PinkColorExstension.swift in Sources */,
+				DAFAD27722F3F71900BC9E68 /* CommentsViewController.swift in Sources */,
 				DAD48CA322E4CA01009CBD97 /* HomeViewController.swift in Sources */,
 				DA01873E22CF7BBE00A32810 /* LoginViewController.swift in Sources */,
 				DA01872322CE53D900A32810 /* AppDelegate.swift in Sources */,
 				DA17541522E86EF30091DF6C /* User.swift in Sources */,
+				DAF2BCFD22E9FD7800365AAE /* ShowDetailsViewController.swift in Sources */,
+				DAFAD27B22F4040A00BC9E68 /* CommentsCell.swift in Sources */,
+				DAF2BCFB22E9CFF800365AAE /* ShowCell.swift in Sources */,
 				DA17541B22E874160091DF6C /* Show.swift in Sources */,
+				DAFAD27922F401CF00BC9E68 /* Comment.swift in Sources */,
+				DAFAD27522F3851E00BC9E68 /* Media.swift in Sources */,
+				DAF2BCFF22EA473B00365AAE /* ShowDetails.swift in Sources */,
 				DAD48C9522DDF9D9009CBD97 /* CheckBox.swift in Sources */,
+				DAF2BD0322EB2A0200365AAE /* EpisodeCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
