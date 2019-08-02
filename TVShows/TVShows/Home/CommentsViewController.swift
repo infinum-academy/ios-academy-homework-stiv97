@@ -21,7 +21,21 @@ class CommentsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        commentsTableView.dataSource = self
 
+        SVProgressHUD.show()
+        loadComments()
+    }
+
+    @IBAction func backButtonPressed(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    @IBAction func postButtonPressed(_ sender: Any) {
+        postComment()
+    }
+    
+    private func loadComments() {
         guard let token = loginUser?.token
             else {
                 print("Invalid user")
@@ -33,9 +47,7 @@ class CommentsViewController: UIViewController {
                 return
         }
         
-        SVProgressHUD.show()
         let headers = ["Authorization" : token]
-        
         Alamofire
             .request("https://api.infinum.academy/api/episodes/" + episodeId + "/comments",
                      method: .get,
@@ -57,14 +69,6 @@ class CommentsViewController: UIViewController {
                 }
         }
     }
-
-    @IBAction func backButtonPressed(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
-    }
-    @IBAction func postButtonPressed(_ sender: Any) {
-        postComment()
-    }
-    
     private func postComment(){
         guard let token = loginUser?.token
             else {
@@ -91,7 +95,7 @@ class CommentsViewController: UIViewController {
                 switch response.result {
                 case .success:
                     print("Success")
-                    self.dismiss(animated: true, completion: nil)
+                    self.loadComments()
                 case .failure(let error):
                     self.alertMessage(title: "Failed", message: "API failure")
                     print(error)

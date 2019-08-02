@@ -121,10 +121,12 @@ class AddEpisodeViewController: UIViewController{
                 print("Invalid user")
                 return
         }
-        DispatchQueue.main.async {
-            self.uploadImageOnAPI(token: token)
+        
+        self.uploadImageOnAPI(token: token) {
             self.addEpisode()
         }
+            
+        
         
     }
     
@@ -152,7 +154,7 @@ extension AddEpisodeViewController: UIImagePickerControllerDelegate,  UINavigati
 }
 
 private extension AddEpisodeViewController {
-    func uploadImageOnAPI(token: String) {
+    func uploadImageOnAPI(token: String, finished: @escaping ()->Void) {
         let headers = ["Authorization": token]
         guard let someUIImage = uploadedImage.image
             else { return }
@@ -170,19 +172,20 @@ private extension AddEpisodeViewController {
             { [weak self] result in
                 switch result {
                 case .success(let uploadRequest, _, _):
-                    self?.processUploadRequest(uploadRequest)
+                    self?.processUploadRequest(uploadRequest, finished: finished)
                 case .failure(let encodingError):
                      print(encodingError)
                 } }
        
     }
-    func processUploadRequest(_ uploadRequest: UploadRequest) {
+    func processUploadRequest(_ uploadRequest: UploadRequest, finished: @escaping ()->Void) {
         uploadRequest
             .responseDecodableObject(keyPath: "data") { [weak self] (response:DataResponse<Media>) in
                 switch response.result {
                 case .success(let media):
                     self?.media = media
                     print("Proceed to add episode call...")
+                    finished()
                 case .failure(let error):
                     print("FAILURE: \(error)")
                 }
